@@ -1,3 +1,19 @@
 server:
   servlet:
     context-path: /api
+
+
+## default connection pool
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+
+
+  flyway:
+    enabled: true
+    out-of-order: true
+    locations:
+      - classpath:migration
