@@ -12,12 +12,13 @@ public interface UserMapper {
 
   @BeanMapping(ignoreUnmappedSourceProperties = "password")
   @Mapping(target = "id", ignore = true)
+  @Mapping(target = "createdOn", ignore = true)
   AppUser fromDto(RegisterUserDto registerUserDto);
 
   @BeanMapping(ignoreUnmappedSourceProperties = {
-      "id", "password"
+      "id", "password", "createdOn"
   })
-  @Mapping(target = "id", ignore = true)
+  // @Mapping(target = "id", ignore = true)
   @Mapping(source = "email", target = "username")
   UserDto toDto(AppUser user);
 
