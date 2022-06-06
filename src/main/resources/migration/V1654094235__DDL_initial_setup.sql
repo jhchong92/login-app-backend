@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS users;
-CREATE TABLE users
+DROP TABLE IF EXISTS app_user;
+CREATE TABLE app_user
 (
     id         VARCHAR(50) PRIMARY KEY,
-    firstName  VARCHAR(255),
-    lastName   VARCHAR(255),
+    first_name  VARCHAR(255),
+    last_name   VARCHAR(255),
     email      VARCHAR(255) UNIQUE NOT NULL,
     created_on TIMESTAMP           NOT NULL
 );

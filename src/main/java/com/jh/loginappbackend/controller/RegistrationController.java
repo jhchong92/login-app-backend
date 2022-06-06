@@ -3,7 +3,7 @@ package com.jh.loginappbackend.controller;
 import com.jh.loginappbackend.dto.RegisterUserDto;
 import com.jh.loginappbackend.dto.UserDto;
 import com.jh.loginappbackend.mapper.UserMapper;
-import com.jh.loginappbackend.model.User;
+import com.jh.loginappbackend.model.AppUser;
 import com.jh.loginappbackend.service.RegistrationService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +26,7 @@ public class RegistrationController {
 
   @PostMapping
   public UserDto register(@Valid @RequestBody RegisterUserDto registerUserDto) {
-    log.info("RegisterUserDto {}", registerUserDto);
-    User user = registrationService.registerUser(registerUserDto);
-    return userMapper.toDto(user);
+    AppUser appUser = registrationService.registerUser(registerUserDto);
+    return userMapper.toDto(appUser);
   }
 }
