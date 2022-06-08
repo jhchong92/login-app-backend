@@ -3,16 +3,11 @@ package com.jh.loginappbackend;
 import com.jh.loginappbackend.controller.HelloController;
 import com.jh.loginappbackend.controller.LoginController;
 import com.jh.loginappbackend.controller.RegistrationController;
-import com.jh.loginappbackend.service.AppUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,12 +35,6 @@ public class WebSecurityConfig {
   }
 
   @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
-      throws Exception {
-    return authenticationConfiguration.getAuthenticationManager();
-  }
-
-  @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http
         .csrf().disable()
@@ -56,7 +45,7 @@ public class WebSecurityConfig {
         .antMatchers(HttpMethod.POST, RegistrationController.REQUEST_MAPPING_PATH).permitAll()
         .antMatchers(HttpMethod.POST, LoginController.REQUEST_MAPPING_PATH).permitAll()
         .anyRequest().denyAll();
-        // .httpBasic(Customizer.withDefaults());
+
     return http.build();
   }
 
