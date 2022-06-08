@@ -3,6 +3,7 @@ server:
     context-path: /api
   error:
     include-message: ALWAYS
+    include-binding-errors: ALWAYS
 
 
 ## default connection pool
