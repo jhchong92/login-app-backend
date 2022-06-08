@@ -2,6 +2,7 @@ package com.jh.loginappbackend.service;
 
 import com.jh.loginappbackend.dao.UserRepository;
 import com.jh.loginappbackend.dto.RegisterUserDto;
+import com.jh.loginappbackend.exception.DuplicateAppUserException;
 import com.jh.loginappbackend.mapper.UserMapper;
 import com.jh.loginappbackend.model.AppUser;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,9 @@ public class RegistrationService {
   private final PasswordEncoder passwordEncoder;
 
   public AppUser registerUser(RegisterUserDto registerUserDto) {
+    userRepository.findByEmail(registerUserDto.getEmail())
+        .ifPresent((user) -> { throw new DuplicateAppUserException(); });
+
     AppUser appUser = userMapper.fromDto(registerUserDto);
     appUser.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
     return userRepository.save(appUser);
