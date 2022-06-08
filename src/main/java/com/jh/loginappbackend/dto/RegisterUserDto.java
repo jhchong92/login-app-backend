@@ -1,5 +1,6 @@
 package com.jh.loginappbackend.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class RegisterUserDto {
   private String password;
 
   @NotBlank
+  @Email
   private String email;
 
 }
