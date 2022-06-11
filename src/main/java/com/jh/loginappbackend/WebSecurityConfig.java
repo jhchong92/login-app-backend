@@ -20,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig {
   private final UserDetailsService userDetailsService;
+  private final CookieSecurityContextRepository cookieSecurityContextRepository;
 
   @Bean
   public PasswordEncoder passwordEncoder() {
@@ -39,6 +40,14 @@ public class WebSecurityConfig {
     http
         .csrf().disable()
         .cors().disable();
+
+    // disable login form
+    http.formLogin().disable();
+
+    http.securityContext().securityContextRepository(cookieSecurityContextRepository);
+    // disable session creation
+    http.sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
     http.authorizeRequests()
         .antMatchers(HttpMethod.GET, HelloController.REQUEST_MAPPING_PATH).permitAll()

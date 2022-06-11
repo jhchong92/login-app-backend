@@ -20,3 +20,5 @@ spring:
     out-of-order: true
     locations:
       - classpath:migration
+
+auth.cookie.hmac-key: my-secret-key
