@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
   private final AuthenticationManager authenticationManager;
-  public boolean login(LoginUserDto loginUserDto) throws AuthenticationException {
+  public Authentication login(LoginUserDto loginUserDto) throws AuthenticationException {
     Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
         loginUserDto.getUsername(), loginUserDto.getPassword()
     ));
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
-    return true;
+    return authentication;
   }
 }
