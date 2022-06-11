@@ -2,6 +2,7 @@ package com.jh.loginappbackend;
 
 import com.jh.loginappbackend.controller.HelloController;
 import com.jh.loginappbackend.controller.LoginController;
+import com.jh.loginappbackend.controller.LogoutController;
 import com.jh.loginappbackend.controller.ProfileController;
 import com.jh.loginappbackend.controller.RegistrationController;
 import com.jh.loginappbackend.security.CookieSecurityContextRepository;
@@ -46,6 +47,7 @@ public class WebSecurityConfig {
 
     // disable login form
     http.formLogin().disable();
+    http.logout().disable();
 
     http.securityContext().securityContextRepository(cookieSecurityContextRepository);
     // disable session creation
@@ -56,6 +58,7 @@ public class WebSecurityConfig {
         .antMatchers(HttpMethod.GET, HelloController.REQUEST_MAPPING_PATH).permitAll()
         .antMatchers(HttpMethod.POST, RegistrationController.REQUEST_MAPPING_PATH).permitAll()
         .antMatchers(HttpMethod.POST, LoginController.REQUEST_MAPPING_PATH).permitAll()
+        .antMatchers(HttpMethod.POST, LogoutController.REQUEST_MAPPING_PATH).permitAll()
         .antMatchers(HttpMethod.GET, ProfileController.REQUEST_MAPPING_PATH).authenticated()
         .anyRequest().denyAll();
 
