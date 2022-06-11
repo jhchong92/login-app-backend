@@ -27,6 +27,6 @@ public class AppAuthenticationManager implements AuthenticationManager {
     if (!passwordMatches) {
       throw new BadCredentialsException("Bad credentials");
     }
-    return new UsernamePasswordAuthenticationToken(userDetails.getUsername(), userDetails.getPassword(), userDetails.getAuthorities());
+    return new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(), userDetails.getAuthorities());
   }
 }
