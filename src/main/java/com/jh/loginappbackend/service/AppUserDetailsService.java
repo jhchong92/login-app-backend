@@ -1,10 +1,7 @@
 package com.jh.loginappbackend.service;
 
 import com.jh.loginappbackend.dao.UserRepository;
-import com.jh.loginappbackend.model.AppUser;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

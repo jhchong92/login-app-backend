@@ -50,7 +50,7 @@ public class AuthenticatedUserCookie extends Cookie {
     if (!NAME.equals(cookie.getName())) {
       throw new IllegalArgumentException("Cookie is not AuthenticatedUserCookie");
     }
-    //
+
     String hmac = parse(cookie.getValue(), HMAC_PATTERN).orElseThrow(() -> new IllegalArgumentException("Hmac not found in cookie"));
     String username = parse(cookie.getValue(), UID_PATTERN).orElseThrow(() -> new IllegalArgumentException(NAME + " Cookie contains no UID"));
 

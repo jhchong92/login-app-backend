@@ -41,6 +41,7 @@ public class WebSecurityConfig {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    // TODO: Enable CSRF and CORS
     http
         .csrf().disable()
         .cors().disable();

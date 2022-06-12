@@ -3,7 +3,6 @@ package com.jh.loginappbackend.service;
 import com.jh.loginappbackend.dao.UserRepository;
 import com.jh.loginappbackend.model.AppUser;
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
